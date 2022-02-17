@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CustomRasterImageDef", "CustomRasterImageDef\CustomRasterImageDef.vcxproj", "{B5443732-5632-4826-82D9-F57878F38D9A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ManagedWrapper", "ManagedWrapper\ManagedWrapper.vcxproj", "{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B5443732-5632-4826-82D9-F57878F38D9A} = {B5443732-5632-4826-82D9-F57878F38D9A}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManagedTest", "DotProject1\ManagedTest.csproj", "{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B5443732-5632-4826-82D9-F57878F38D9A} = {B5443732-5632-4826-82D9-F57878F38D9A}
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C} = {A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug2016|Any CPU = Debug2016|Any CPU
+		Debug2016|Mixed Platforms = Debug2016|Mixed Platforms
+		Debug2016|Win32 = Debug2016|Win32
+		Debug2016|x64 = Debug2016|x64
+		Debug2016|x86 = Debug2016|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B5443732-5632-4826-82D9-F57878F38D9A}.Debug2016|Any CPU.ActiveCfg = Debug|x64
+		{B5443732-5632-4826-82D9-F57878F38D9A}.Debug2016|Mixed Platforms.ActiveCfg = Debug|x64
+		{B5443732-5632-4826-82D9-F57878F38D9A}.Debug2016|Win32.ActiveCfg = Debug|x64
+		{B5443732-5632-4826-82D9-F57878F38D9A}.Debug2016|x64.ActiveCfg = Debug|x64
+		{B5443732-5632-4826-82D9-F57878F38D9A}.Debug2016|x64.Build.0 = Debug|x64
+		{B5443732-5632-4826-82D9-F57878F38D9A}.Debug2016|x86.ActiveCfg = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|Any CPU.ActiveCfg = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|Any CPU.Build.0 = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|Mixed Platforms.ActiveCfg = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|Mixed Platforms.Build.0 = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|Win32.ActiveCfg = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|x64.ActiveCfg = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|x64.Build.0 = Debug|x64
+		{A7CEFFBE-2EBA-4E7B-8CB9-A66BF649817C}.Debug2016|x86.ActiveCfg = Debug|x64
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|Any CPU.Build.0 = Debug|Any CPU
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|Win32.ActiveCfg = Debug|x86
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|Win32.Build.0 = Debug|x86
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|x64.ActiveCfg = Debug|x64
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|x64.Build.0 = Debug|x64
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|x86.ActiveCfg = Debug|x86
+		{3B4E70CA-6BDF-45F7-993D-6B1F71D120DE}.Debug2016|x86.Build.0 = Debug|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D378BA87-7F50-4729-86F1-2A7BC1A6369C}
+	EndGlobalSection
+EndGlobal
