@@ -22,58 +22,50 @@
 //-----------------------------------------------------------------------------
 //----- acrxEntryPoint.cpp
 //-----------------------------------------------------------------------------
+#pragma warning( disable : 4278 )
+
+#include <windows.h>
+#include <stdio.h>
+
+#include "RgbModel.h"
+#include "FileWriteDescriptor.h"
+#include "RowProviderInterface.h"
+#include "FileSpecifier.h"
+#include "DataModelAttributes.h"
+#include "DataModel.h"
+#include "Image.h"
+#include "dbmleaderstyle.h"
+
 #include "StdAfx.h"
-
-#if defined(_DEBUG) && !defined(AC_FULL_DEBUG)
-#error _DEBUG should not be defined except in internal Adesk debug builds
-#endif
-
-#include <gcroot.h>
-#include <vcclr.h>
 #include "resource.h"
-#include "EmbeddRasterMgd.h"
+#include "AcDbMyRasterImageDef.h"
 
-static AcMgObjectFactoryBase** g_PEs = NULL;
+// include the libs
+// for Atil
+#pragma comment (lib, "AdImaging.lib")
+#pragma comment (lib, "AdIntImgServices.lib")
 
 //-----------------------------------------------------------------------------
 #define szRDS _RXST("ADSK")
 
 //-----------------------------------------------------------------------------
 //----- ObjectARX EntryPoint
-class CManagedWrapperApp : public AcRxArxApp {
+class CdbxApp : public AcRxDbxApp {
 
 public:
-	CManagedWrapperApp () : AcRxArxApp () {}
+	CdbxApp () : AcRxDbxApp () {}
 
 	virtual AcRx::AppRetCode On_kInitAppMsg (void *pkt) {
-		// TODO: Load dependencies here
-
-		// You *must* call On_kInitAppMsg here
-		AcRx::AppRetCode retCode = AcRxArxApp::On_kInitAppMsg (pkt) ;
-		
-		// create a new object factory array
-		static AcMgObjectFactoryBase* PEs[] =
-		{
-			new AcMgObjectFactory<ADN::CustomWrapper::MyRasterImageDefMgd, AcDbMyRasterImageDef>(),
-			// end the array with a NULL
-			NULL
-		};
-
-		g_PEs = PEs;
-
-		return (retCode) ;
+		AcRx::AppRetCode retCode = AcRxDbxApp::On_kInitAppMsg(pkt);
+		acrxDynamicLinker->loadModule(L"acismobj24.dbx", true);
+		AcDbMyRasterImageDef::rxInit();
+		acrxBuildClassHierarchy();
+		return (retCode);
 	}
 
 	virtual AcRx::AppRetCode On_kUnloadAppMsg (void *pkt) {
-		
-		// TODO: Add your code here
-		int i = 0;
-		while (g_PEs[i] != NULL)
-			delete g_PEs[i++];
-
-		// You *must* call On_kUnloadAppMsg here
-		AcRx::AppRetCode retCode =AcRxArxApp::On_kUnloadAppMsg (pkt) ;
-
+		AcRx::AppRetCode retCode = AcRxDbxApp::On_kUnloadAppMsg (pkt) ;
+		deleteAcRxClass(AcDbMyRasterImageDef::desc());
 		return (retCode) ;
 	}
 
@@ -82,4 +74,5 @@ public:
 };
 
 //-----------------------------------------------------------------------------
-IMPLEMENT_ARX_ENTRYPOINT(CManagedWrapperApp)
+IMPLEMENT_ARX_ENTRYPOINT(CdbxApp)
+

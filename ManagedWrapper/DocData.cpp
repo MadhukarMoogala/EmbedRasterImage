@@ -1,4 +1,4 @@
-// (C) Copyright 2002-2007 by Autodesk, Inc. 
+// (C) Copyright 2002-2012 by Autodesk, Inc. 
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted, 
@@ -20,8 +20,24 @@
 //
 
 //-----------------------------------------------------------------------------
-//------ StdAfx.cpp : source file that includes just the standard includes
-//------  StdAfx.pch will be the pre-compiled header
-//------  StdAfx.obj will contain the pre-compiled type information
+//----- DocData.cpp : Implementation file
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
+
+//-----------------------------------------------------------------------------
+//----- The one and only document manager object. You can use the DocVars object to retrieve
+//----- document specific data throughout your application
+AcApDataManager<CDocData> DocVars ;
+
+//-----------------------------------------------------------------------------
+//----- Implementation of the document data class.
+CDocData::CDocData () {
+}
+
+//-----------------------------------------------------------------------------
+CDocData::CDocData (const CDocData &data) {
+}
+
+//-----------------------------------------------------------------------------
+CDocData::~CDocData () {
+}

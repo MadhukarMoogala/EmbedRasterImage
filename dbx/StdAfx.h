@@ -25,51 +25,51 @@
 //-      but are changed infrequently
 //-----------------------------------------------------------------------------
 #pragma once
-#define MANAGEDWRAPPER_MODULE
+#define DBX_MODULE
 
-/*#ifndef
+#ifndef _ALLOW_RTCc_IN_STL
 #define _ALLOW_RTCc_IN_STL
-#endif*/
+#endif
 
 #pragma pack(push, 8)
 #pragma warning(disable : 4786 4996)
-    //#pragma warning(disable: 4098)
+//#pragma warning(disable: 4098)
 
-    //-----------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 #include <windows.h>
 
-    //- ObjectARX and OMF headers needs this
+//- ObjectARX and OMF headers needs this
 #include <map>
 
-            //-----------------------------------------------------------------------------
-#using < mscorlib.dll>
-#using < System.dll>
-#using <system.core.dll>
-#using < acdbmgd.dll>
-    #using < acmgd.dll>
-        #using < AcCui.dll>
-            
-#include <vcclr.h>
+//////////////////////////////////////////////////////////////////////////
+// ATIL stuff
+#include <AcTc.h>
+#include "FileWriteDescriptor.h"
+#include "RowProviderInterface.h"
+#include "FileSpecifier.h"
+#include "DataModelAttributes.h"
+#include "DataModel.h"
+#include "Image.h"
+#include "RgbColor.h"
+#include "ImageFilter.h"
 
-        //-----------------------------------------------------------------------------
-    //- Include ObjectDBX/ObjectARX headers
-    //- Uncomment one of the following lines to bring a given library in your project.
-    //#define _BREP_SUPPORT_					//- Support for the BRep API
-    //#define _HLR_SUPPORT_						//- Support for the Hidden Line Removal API
-    //#define _AMODELER_SUPPORT_				//- Support for the AModeler API
-        //#define _ASE_SUPPORT_							//- Support for the ASI/ASE API
-    //#define _RENDER_SUPPORT_					//- Support for the AutoCAD Render API
-        //#define _ARX_CUSTOM_DRAG_N_DROP_	//- Support for the ObjectARX Drag'n Drop API
-    //#define _INC_LEAGACY_HEADERS_			//- Include legacy headers in this project
-#include "arxHeaders.h"
+#include <JfifFormatCodec.h>
+#include <PngFormatCodec.h>
+#include <TiffFormatCodec.h>
+#include <BmpFormatCodec.h>
+#include <TiffCustomProperties.h>
+#include <PngCustomProperties.h>
+#include <FileReadDescriptor.h>
+#include <RgbPaletteModel.h>
 
-        
 //-----------------------------------------------------------------------------
-#include "DocData.h" //- Your document specific data class holder
-
-    //- Declare it as an extern here so that it becomes available in all modules
-    extern AcApDataManager<CDocData> DocVars;
-
-                #pragma pack(pop)
+//- Include ObjectDBX/ObjectARX headers
+//- Uncomment one of the following lines to bring a given library in your project.
+//#define _BREP_SUPPORT_					//- Support for the BRep API
+//#define _HLR_SUPPORT_						//- Support for the Hidden Line Removal API
+//#define _AMODELER_SUPPORT_				//- Support for the AModeler API
+#include "dbxHeaders.h"
+    
+#pragma pack(pop)
 
     

@@ -18,19 +18,16 @@
     <ClCompile Include="StdAfx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AssemblyInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DocData.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="acrxEntryPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ManagedWrapper.cpp">
+    <ClCompile Include="dbx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EmbeddRasterMgd.cpp">
+    <ClCompile Include="AcDbMyRasterImageDef.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,18 +35,21 @@
     <ClInclude Include="StdAfx.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DocData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EmbeddRasterMgd.h">
+    <ClInclude Include="AcDbMyRasterImageDef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="ManagedWrapper.rc">
+    <ResourceCompile Include="dbx.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
   </ItemGroup>

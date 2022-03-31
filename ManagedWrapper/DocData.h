@@ -1,4 +1,4 @@
-// (C) Copyright 2002-2007 by Autodesk, Inc. 
+// (C) Copyright 2002-2012 by Autodesk, Inc. 
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted, 
@@ -36,7 +36,5 @@ public:
 	CDocData () ;
 	CDocData (const CDocData &data) ;
 	~CDocData () ;
-
-	Adesk::UInt32 mTestValue;
 
 } ;

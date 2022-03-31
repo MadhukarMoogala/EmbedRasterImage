@@ -1,4 +1,4 @@
-// (C) Copyright 2002-2007 by Autodesk, Inc. 
+// (C) Copyright 2002-2012 by Autodesk, Inc. 
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted, 
@@ -23,6 +23,9 @@
 //----- AssemblyInfo.cpp
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
+#if defined(_DEBUG) && !defined(AC_FULL_DEBUG)
+#error _DEBUG should not be defined except in internal Adesk debug builds
+#endif
 
 using namespace System::Reflection;
 using namespace System::Runtime::CompilerServices;

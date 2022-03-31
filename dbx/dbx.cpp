@@ -20,8 +20,22 @@
 //
 
 //-----------------------------------------------------------------------------
-//------ StdAfx.cpp : source file that includes just the standard includes
-//------  StdAfx.pch will be the pre-compiled header
-//------  StdAfx.obj will contain the pre-compiled type information
+//- dbx.cpp : Initialization functions
 //-----------------------------------------------------------------------------
 #include "StdAfx.h"
+#include "resource.h"
+
+//-----------------------------------------------------------------------------
+//- DLL Entry Point
+extern "C"
+BOOL WINAPI DllMain (HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved) {
+	//- Remove this if you use lpReserved
+	UNREFERENCED_PARAMETER(lpReserved) ;
+
+	if ( dwReason == DLL_PROCESS_ATTACH ) {
+        _hdllInstance =hInstance ;
+	} else if ( dwReason == DLL_PROCESS_DETACH ) {
+	}
+	return (TRUE) ;
+}
+

@@ -60,12 +60,12 @@ BEGIN
 		BLOCK "040904B0"
 		BEGIN
 			VALUE "CompanyName", "\0"
-			VALUE "FileDescription", "ManagedWrapper ObjectARX application\0"
+			VALUE "FileDescription", "dbx ObjectDBX application\0"
 			VALUE "FileVersion", "1, 0, 0, 1\0"
-			VALUE "InternalName", "ManagedWrapper\0"
+			VALUE "InternalName", "dbx\0"
 			VALUE "LegalCopyright", "Copyright © 2012\0"
-			VALUE "OriginalFilename", "ADSKManagedWrapper.arx\0"
-			VALUE "ProductName", "ManagedWrapper Application\0"
+			VALUE "OriginalFilename", "ADSKdbx.dbx\0"
+			VALUE "ProductName", "dbx Application\0"
 			VALUE "ProductVersion", "1, 0, 0, 1\0"
 		END
 	END
@@ -84,7 +84,7 @@ END
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-	IDS_PROJNAME					"ManagedWrapper"
+	IDS_PROJNAME					"dbx"
 END
 
 

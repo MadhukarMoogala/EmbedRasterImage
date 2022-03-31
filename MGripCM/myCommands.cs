@@ -1,27 +1,21 @@
-﻿using System;
-using Autodesk.AutoCAD.Runtime;
+﻿// (C) Copyright 2021 by  
+//
 using Autodesk.AutoCAD.ApplicationServices;
 using Autodesk.AutoCAD.DatabaseServices;
-using Autodesk.AutoCAD.Geometry;
 using Autodesk.AutoCAD.EditorInput;
-
+using Autodesk.AutoCAD.Geometry;
+using Autodesk.AutoCAD.Runtime;
+using System;
 using ADN.CustomWrapper;
 using System.IO;
 
-[assembly: CommandClass(typeof(ManagedTest.Commands))]
+// This line is not mandatory, but improves loading performances
+[assembly: CommandClass(typeof(ManagedEmbeddedRasterImage.MyCommands))]
 
-namespace ManagedTest
+namespace ManagedEmbeddedRasterImage
 {
-    public class Commands: IExtensionApplication
+    public class MyCommands
     {
-        public void Initialize()
-        {
-        }
-
-        public void Terminate()
-        {
-        }
-
         [CommandMethod("EmbedImageMgd")]
         static public void EmbedImageMgdMethod()
         {
@@ -37,19 +31,16 @@ namespace ManagedTest
 
             using (Transaction Tx = db.TransactionManager.StartTransaction())
             {
-                BlockTable bt = Tx.GetObject(db.BlockTableId, OpenMode.ForRead) 
-                    as BlockTable;
-
-                BlockTableRecord model = Tx.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite) 
-                    as BlockTableRecord;
+                BlockTable bt = Tx.GetObject(db.BlockTableId, OpenMode.ForRead) as BlockTable;
+                BlockTableRecord model = Tx.GetObject(bt[BlockTableRecord.ModelSpace], OpenMode.ForWrite) as BlockTableRecord;
 
                 //Image dictionary name constant
-                String dictName =  "RASTER_USING_BUFFER";
+                String dictName = "RASTER_USING_BUFFER";
                 MyRasterImageDefMgd imageDef;
                 ObjectId imageDefId;
                 ObjectId imageDictId = MyRasterImageDefMgd.GetImageDictionary(db);
 
-                if(imageDictId.IsNull)
+                if (imageDictId.IsNull)
                 {
                     //Image dictionary doesn't exist, create new
                     imageDictId = MyRasterImageDefMgd.CreateImageDictionary(db);
@@ -59,7 +50,7 @@ namespace ManagedTest
 
                 //See if our raster def in the image dict exists, 
                 //if not, create new
-                if(imageDict.Contains(dictName))
+                if (imageDict.Contains(dictName))
                 {
                     //Get the raster image def
                     imageDefId = imageDict.GetAt(dictName);
@@ -74,9 +65,8 @@ namespace ManagedTest
                     var per = ed.GetString("Set Embedded Image Path");
                     if (per.Status != PromptStatus.OK) return;
                     if (!File.Exists(per.StringResult))
-                    {
                         ed.WriteMessage($"File Not Found:{per.StringResult}");
-                    }
+
                     imageDef.SetEmbeddedImage(per.StringResult);
                     imageDict.UpgradeOpen();
                     imageDefId = imageDict.SetAt(dictName, imageDef);
@@ -87,9 +77,7 @@ namespace ManagedTest
                 RasterImage image = new RasterImage
                 {
                     ImageDefId = imageDefId,
-
                     Orientation = new CoordinateSystem3d(imagePos, Vector3d.XAxis, Vector3d.YAxis),
-
                     //And some other properties
                     ShowImage = true
                 };
@@ -103,7 +91,7 @@ namespace ManagedTest
                 // warning the XRef palette
                 RasterImage.EnableReactors(true);
                 image.AssociateRasterDef(imageDef);
-                
+
                 Tx.Commit();
             }
         }

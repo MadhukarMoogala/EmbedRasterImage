@@ -1,4 +1,4 @@
-// (C) Copyright 2002-2012 by Autodesk, Inc. 
+// (C) Copyright 2005-2007 by Autodesk, Inc. 
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted, 
@@ -17,27 +17,41 @@
 // restrictions set forth in FAR 52.227-19 (Commercial Computer
 // Software - Restricted Rights) and DFAR 252.227-7013(c)(1)(ii)
 // (Rights in Technical Data and Computer Software), as applicable.
-//
 
 //-----------------------------------------------------------------------------
-//- ManagedWrapper.cpp : Initialization functions
-//-----------------------------------------------------------------------------
-#include "StdAfx.h"
-#include "resource.h"
+//- MGripMgdWrapper.h
+#pragma once
+#include "../dbx/AcDbMyRasterImageDef.h"
 
 //-----------------------------------------------------------------------------
-//- DLL Entry Point
-#pragma managed(push, off)
-extern "C"
-BOOL WINAPI DllMain (HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved) {
-	//- Remove this if you use lpReserved
-	UNREFERENCED_PARAMETER(lpReserved) ;
+using namespace System;
+using namespace Autodesk::AutoCAD::Geometry;
+using namespace Autodesk::AutoCAD::DatabaseServices;
 
-	if ( dwReason == DLL_PROCESS_ATTACH ) {
-        _hdllInstance =hInstance ;
-	} else if ( dwReason == DLL_PROCESS_DETACH ) {
+//-----------------------------------------------------------------------------
+//- Wizard Generated Custom Object .NET Wrapper
+//- See the mgPoly in the ObjectARX SDK for further information
+//-----------------------------------------------------------------------------
+namespace ADN {
+	namespace CustomWrapper
+	{
+		[Autodesk::AutoCAD::Runtime::Wrapper("MyRasterImageDef")]
+		public ref class MyRasterImageDefMgd : public Autodesk::AutoCAD::DatabaseServices::RasterImageDef
+		{
+		public:
+			//- Constructor
+			MyRasterImageDefMgd();
+
+		internal:
+			MyRasterImageDefMgd(System::IntPtr unmanagedPointer, bool bAutoDelete);
+
+			//- Returns the unmanaged ARX Object
+			inline AcDbMyRasterImageDef* GetImpObj() {
+				return (static_cast<AcDbMyRasterImageDef*>(UnmanagedObject.ToPointer()));
+			}
+
+		public:
+			void SetEmbeddedImage(System::String^ imageFilePath);
+		};
 	}
-	return (TRUE) ;
 }
-#pragma managed(pop)
-
